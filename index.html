@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            primary: '#1F39FF',   /* Vivid Blue */
+                            card: '#161B22',      /* Dark Grey/Blue */
+                            bg: '#0D1117',        /* Darkest Background */
+                            pop: '#FFE51F',       /* Yellow Accent */
+                            text: '#FFFFFF',      /* White Text */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0D1117; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #161B22; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1F39FF; 
+        }
+        
+        .pop-hover:hover {
+            color: #FFE51F;
+            transition: color 0.3s ease;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-bottom: 2px solid #FFE51F;
+        }
+    </style>
+</head>
+<body class="bg-theme-bg text-theme-text font-sans antialiased selection:bg-theme-pop selection:text-theme-bg">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-gray-800 bg-theme-bg/90 backdrop-blur-md">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse group">
+                <div class="w-8 h-8 bg-theme-primary rounded-full flex items-center justify-center text-theme-text font-bold text-xl group-hover:bg-theme-pop group-hover:text-theme-bg transition-colors">
+                    <img src="Gemini_Generated_Image_5q7s9t5q7s9t5q7s.png" alt="">
+                </div>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap">Portfolio</span>
+            </a>
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false" id="menu-toggle">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-700 rounded-lg bg-theme-card md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
+                    <li><a href="#about" target="_self" class="block py-2 px-3 text-white rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-theme-pop md:p-0 transition-colors">About</a></li>
+                    <li><a href="#skills" target="_self" class="block py-2 px-3 text-white rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-theme-pop md:p-0 transition-colors">Skills</a></li>
+                    <li><a href="#services" target="_self" class="block py-2 px-3 text-white rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-theme-pop md:p-0 transition-colors">Services</a></li>
+                    <li><a href="#projects" target="_self" class="block py-2 px-3 text-white rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-theme-pop md:p-0 transition-colors">Projects</a></li>
+                    <li><a href="#contact" target="_self" class="block py-2 px-3 text-white rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-theme-pop md:p-0 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbarSticky = document.getElementById('navbar-sticky');
+        menuToggle.addEventListener('click', () => {
+            navbarSticky.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking a link
+        const navLinks = navbarSticky.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbarSticky.classList.add('hidden');
+            });
+        });
+    </script>
+
+    <!-- About Section (Hero) -->
+    <section id="about" class="min-h-screen flex items-center justify-center pt-20 pb-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+            <!-- Image Area -->
+            <div class="w-full md:w-1/2 flex justify-center relative">
+                <!-- Decorative elements -->
+                <div class="absolute inset-0 bg-theme-primary opacity-20 blur-3xl rounded-full transform translate-x-4 translate-y-4"></div>
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-theme-card shadow-2xl">
+                    <!-- Placeholder Image using Unsplash source for "creative person" -->
+                    <img src="WhatsApp Image 2025-12-15 at 4.48.24 PM.jpeg" alt="Profile Photo" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <!-- Text Area -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <span class="text-theme-pop font-semibold tracking-wider uppercase text-sm mb-2 block">Hello, I am Ghassan</span>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Bringing my vision to <span class="text-theme-primary">Life</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                    I am merely bringing my own vision to life, But let me help you bring yours to life, with dedication and hardwork, and the mental image of your imagination along with my imagination, i create dreams and bring vision to realities, i love graphic design, along with other things
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#contact" class="px-8 py-3 bg-theme-primary text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 shadow-[0_0_15px_rgba(31,57,255,0.4)]">
+                        Get in Touch
+                    </a>
+                    <a href="#projects" class="px-8 py-3 border border-gray-600 text-white font-semibold rounded-lg hover:border-theme-pop hover:text-theme-pop transition duration-300">
+                        View Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-theme-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-theme-pop">Skills</span></h2>
+                <div class="w-20 h-1 bg-theme-primary mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-theme-card p-6 rounded-xl border border-gray-800 text-center hover:border-theme-primary transition duration-300">
+                    <div class="w-16 h-16 bg-theme-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-theme-primary text-2xl">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Graphic Designer</h3>
+                    <p class="text-sm text-gray-400">Creating visual concepts to communicate ideas that inspire.</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="bg-theme-card p-6 rounded-xl border border-gray-800 text-center hover:border-theme-primary transition duration-300">
+                    <div class="w-16 h-16 bg-theme-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-theme-primary text-2xl">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Video Editor</h3>
+                    <p class="text-sm text-gray-400">Manipulating and rearranging video shots to create a new work.</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="bg-theme-card p-6 rounded-xl border border-gray-800 text-center hover:border-theme-primary transition duration-300">
+                    <div class="w-16 h-16 bg-theme-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-theme-primary text-2xl">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">3D Modelling</h3>
+                    <p class="text-sm text-gray-400">Developing mathematical representations of 3-dimensional surfaces.</p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="bg-theme-card p-6 rounded-xl border border-gray-800 text-center hover:border-theme-primary transition duration-300">
+                    <div class="w-16 h-16 bg-theme-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-theme-primary text-2xl">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sound Design</h3>
+                    <p class="text-sm text-gray-400">Creating audio elements for film, television, and game development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-[#0b0e13]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-2">Services <span class="text-theme-primary">Offered</span></h2>
+                    <p class="text-gray-400">High quality services tailored to your needs.</p>
+                </div>
+                <a href="#contact" class="hidden md:inline-block text-theme-pop hover:text-white transition mt-4 md:mt-0">Start a project <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-theme-card p-8 rounded-2xl relative overflow-hidden group card-hover">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i class="fas fa-paint-brush text-8xl text-theme-pop"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Graphic Designer</h3>
+                    <ul class="space-y-2 text-gray-400 mb-6">
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>Brand Identity</li>
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>Social Media Posts</li>
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>Marketing Materials</li>
+                    </ul>
+                    <a href="#contact" class="text-theme-primary font-medium hover:text-theme-pop transition">Learn More &rarr;</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-theme-card p-8 rounded-2xl relative overflow-hidden group card-hover">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i class="fas fa-laptop-code text-8xl text-theme-pop"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Web Designer</h3>
+                    <ul class="space-y-2 text-gray-400 mb-6">
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>UI/UX Design</li>
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>Responsive Layouts</li>
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>Landing Pages</li>
+                    </ul>
+                    <a href="#contact" class="text-theme-primary font-medium hover:text-theme-pop transition">Learn More &rarr;</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-theme-card p-8 rounded-2xl relative overflow-hidden group card-hover">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i class="fas fa-film text-8xl text-theme-pop"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Video Editor</h3>
+                    <ul class="space-y-2 text-gray-400 mb-6">
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>YouTube Content</li>
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>Commercial Ads</li>
+                        <li><i class="fas fa-check text-theme-primary mr-2"></i>Color Grading</li>
+                    </ul>
+                    <a href="#contact" class="text-theme-primary font-medium hover:text-theme-pop transition">Learn More &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                 <a href="#contact" class="text-theme-pop hover:text-white transition">Start a project <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-theme-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-theme-pop font-semibold uppercase text-sm">Portfolio</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2">Selected <span class="text-theme-primary">Projects</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-xl bg-theme-card">
+                    <div class="h-64 overflow-hidden">
+                        <img src="logo ghassan.jpg" alt="Project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-white">Brand Identity</h3>
+                            <span class="px-2 py-1 text-xs font-semibold bg-theme-primary/20 text-theme-primary rounded">Graphic Design</span>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">A complete new brand project for a tech startup, focusing on neon aesthetics and futuristic typography to convey innovation.</p>
+                        <a href="#" class="inline-flex items-center text-theme-pop hover:text-white transition text-sm font-medium">View Case Study <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-xl bg-theme-card">
+                    <div class="h-64 overflow-hidden">
+                        <img src="final_guitar_smooth.jpg" alt="Project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-white">3d Modelling</h3>
+                            <span class="px-2 py-1 text-xs font-semibold bg-theme-primary/20 text-theme-primary rounded">3d modelling</span>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">Modelling Project of designing a Guitar using Maya, and having a lot of details</p>
+                        <a href="#" class="inline-flex items-center text-theme-pop hover:text-white transition text-sm font-medium">see Project <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden rounded-xl bg-theme-card">
+                    <div class="h-64 overflow-hidden">
+                        <video src="Anxiety_Interview-ghassan.mp4"></video> class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-white">Editing videos</h3>
+                            <span class="px-2 py-1 text-xs font-semibold bg-theme-primary/20 text-theme-primary rounded">Video Editing</span>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">Produced and edited this video, which talks about anxiety and its effects on a person</p>
+                        <a href="#" class="inline-flex items-center text-theme-pop hover:text-white transition text-sm font-medium">watch video <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="group relative overflow-hidden rounded-xl bg-theme-card">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images (4).png" alt="Project 4" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-white">football app redesign</h3>
+                            <span class="px-2 py-1 text-xs font-semibold bg-theme-primary/20 text-theme-primary rounded">App Design</span>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">Designed a modern, user-friendly interface for a football focused app, focusing on simplicity and mobile responsiveness.</p>
+                        <a href="https://www.figma.com/design/jOCrZErqsD0oROmFuGxTse/Onefootball?node-id=0-1&p=f&t=V4TncyQnR9DHVN2M-0#" class="inline-flex items-center text-theme-pop hover:text-white transition text-sm font-medium">View Prototype <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-theme-card border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h2 class="text-2xl font-bold text-white mb-2">Let's work together</h2>
+                    <p class="text-gray-400">Have a project in mind? Reach out and let's create something amazing.</p>
+                </div>
+                <div>
+                     <a href="ghassand2000@gmail.com" class="px-6 py-3 bg-theme-primary hover:bg-theme-pop hover:text-theme-bg text-white font-semibold rounded-lg transition duration-300">
+                        Email Me
+                    </a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col items-center justify-center border-t border-gray-800 pt-8">
+                <div class="flex space-x-8 mb-6">
+                    <!-- Instagram -->
+                    <a href="#ghassan.darwazeh" class="text-gray-400 text-2xl hover:text-[#E1306C] transition transform hover:scale-110">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- X (Twitter) -->
+                    <a href="#DarwazehGhassan" class="text-gray-400 text-2xl hover:text-white transition transform hover:scale-110">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <!-- Gmail -->
+                    <a href="mailto:ghassand2000@gmail.com" class="text-gray-400 text-2xl hover:text-[#EA4335] transition transform hover:scale-110">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/0798908860" class="text-gray-400 text-2xl hover:text-[#25D366] transition transform hover:scale-110">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="ghassandarwazeh#" class="text-gray-400 text-2xl hover:text-[#0077b5] transition transform hover:scale-110">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+                <p class="text-gray-500 text-sm">© 2025 Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
